@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carta para Valentina 💌</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #fbe7f0; /* fondo rosado pastel */
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+
+    .screen {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .active {
+      display: flex;
+    }
+
+    .password-screen {
+      flex-direction: column;
+    }
+
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 60px);
+      gap: 10px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .key {
+      background-color: #fff;
+      border: 2px solid #f8c8dc;
+      border-radius: 10px;
+      font-size: 20px;
+      padding: 15px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .key:hover {
+      background-color: #f8c8dc;
+    }
+
+    .input-display {
+      font-size: 24px;
+      margin-top: 20px;
+      letter-spacing: 8px;
+      color: #d81b60;
+    }
+
+    .notepad {
+      background-color: #fff;
+      border: 3px solid #f8c8dc;
+      padding: 25px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 550px;
+      text-align: left;
+      line-height: 1.7;
+      box-shadow: 0 0 20px rgba(248, 200, 220, 0.6);
+    }
+
+    .notepad h3 {
+      margin-top: 0;
+      color: #d81b60;
+      font-family: "Brush Script MT", cursive;
+      font-size: 28px;
+    }
+
+    .notepad p {
+      color: #3a3a3a;
+      font-size: 17px;
+    }
+  </style>
+</head>
+<body>
+  <div id="passwordScreen" class="screen password-screen active">
+    <h2>🔒 Ingresa el PIN</h2>
+    <div class="input-display" id="inputDisplay">••••</div>
+    <div class="keypad">
+      <button class="key" onclick="enterDigit('1')">1</button>
+      <button class="key" onclick="enterDigit('2')">2</button>
+      <button class="key" onclick="enterDigit('3')">3</button>
+      <button class="key" onclick="enterDigit('4')">4</button>
+      <button class="key" onclick="enterDigit('5')">5</button>
+      <button class="key" onclick="enterDigit('6')">6</button>
+      <button class="key" onclick="enterDigit('7')">7</button>
+      <button class="key" onclick="enterDigit('8')">8</button>
+      <button class="key" onclick="enterDigit('9')">9</button>
+      <div></div>
+      <button class="key" onclick="enterDigit('0')">0</button>
+      <div></div>
+    </div>
+  </div>
+
+  <div id="notepadScreen" class="screen">
+    <div class="notepad">
+      <h3>💌</h3>
+      <p>
+        olii se que hoy cumples años y quería aprovechar para mandarte esta notita especial para vos se que cumples 14 años y aunque
+        llevamos poco conociendonos hemos conectado realmete hemos pasado muchas cosas juntos te quisiera llegar a vos y hacerte esta
+        cartita que aunque es digital te la ago con todo mi amor
+      </p>
+      <p>
+        Quiero que sepas que me encantas tal y como eres con tus virtudes y defectos admiro tu fuerza y tu capacidad para enfrentar 
+        los desafíos de la vida con una sonrisa eres una persona increíblemente especial y estoy muy agradecido de tenerte en mi vida.
+      <p>
+        te deseo que este dia sea muy especial para vos obvio que te mereces y sepas que siempre vas a tener alguien para vos que te ama
+         y siempre te va a escuchar sin juzgarte
+      </p>
+        <p>
+            Al igual te deseo que esta nueva etapa que se pude decir que es tu pre 15 pq waos ya el otro año cumples 15 la puedas disfrutar
+            a si que te deseo un feliz cumpleaños
+         
+        </p>
+        Con mucho cariño tu amikito
+
+        <p>Espero que te guste esta notita y que tengas un cumpleaños increíble.</p>
+        <p>Siempre estaré aquí para ti.</p>
+        <p>te amu 💝</p>
+
+    </div>
+  </div>
+
+  <script>
+    const correctPassword = '2910';
+    let input = '';
+
+    function enterDigit(digit) {
+      if (input.length < 4) {
+        input += digit;
+      }
+      const display = document.getElementById('inputDisplay');
+      display.textContent = input.padEnd(4, '•');
+      if (input.length === 4) {
+        if (input === correctPassword) {
+          document.getElementById('passwordScreen').classList.remove('active');
+          document.getElementById('notepadScreen').classList.add('active');
+        } else {
+          alert('PIN incorrecto, inténtalo de nuevo');
+          input = '';
+          display.textContent = '••••';
+        }
+      }
+    }
+  </script>
+</body>
+</html>
